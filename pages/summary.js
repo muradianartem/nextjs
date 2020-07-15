@@ -3,15 +3,16 @@ import { useSelector } from "react-redux";
 import { withRedux } from "../withRedux";
 import GoogleMapReact from "google-map-react";
 import { format, parseISO } from "date-fns";
+import LocationOnIcon from "@material-ui/icons/LocationOn";
 
-const MapComponent = ({ text }) => <div>{text}</div>;
+const MapComponent = () => <LocationOnIcon />;
 
 const DatePage = () => {
   const state = useSelector((state) => state);
 
   return (
     <>
-      <div style={{ height: "40vh", width: "40%" }}>
+      <div>
         <div className="time">
           Your checkin time -
           {format(

@@ -6,6 +6,8 @@ import { useDispatch } from "react-redux";
 import { withRedux } from "../withRedux";
 import Router from "next/router";
 
+import styles from "../style/location.style";
+
 const LocationSearchInput = () => {
   const [address, setAddress] = useState("");
   const dispatch = useDispatch();
@@ -24,6 +26,8 @@ const LocationSearchInput = () => {
       .catch((error) => console.error("Error", error));
   };
 
+  const classes = styles();
+
   return (
     <>
       <Head>
@@ -40,14 +44,15 @@ const LocationSearchInput = () => {
         onSelect={handleSelect}
       >
         {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
-          <div>
-            <span>Choose the location</span>
+          <div style={classes.root}>
+            <span style={classes.label}>Choose the location</span>
             <input
               {...getInputProps({
                 placeholder: "Search Places ...",
                 className: "location-search-input",
               })}
             />
+            <div></div>
             <div className="autocomplete-dropdown-container">
               {loading && <div>Loading...</div>}
               {suggestions.map((suggestion) => {
