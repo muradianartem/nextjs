@@ -6,7 +6,6 @@ import subHours from "date-fns/subHours";
 import { useDispatch } from "react-redux";
 import Router from "next/router";
 import { withStyles } from "@material-ui/core";
-import Input from "@material-ui/core/Input";
 import Button from "@material-ui/core/Button";
 
 import { withRedux } from "../withRedux";
@@ -64,8 +63,8 @@ const Checkin = () => {
           <form onSubmit={handleSubmit}>
             <div style={classes.root}>
               <div style={classes.dateWrapper}>
-                <label>Check-in</label>
-                <Input
+                <label style={classes.dateLabel}>Check-in</label>
+                <input
                   id="checkin"
                   type="datetime-local"
                   min={getDateISO()}
@@ -78,8 +77,8 @@ const Checkin = () => {
                 )}
               </div>
               <div style={classes.dateWrapper}>
-                <label>Check-out</label>
-                <Input
+                <label style={classes.dateLabel}>Check-out</label>
+                <input
                   id="checkout"
                   type="datetime-local"
                   min={getDateISO()}
@@ -91,8 +90,10 @@ const Checkin = () => {
                   <div>{errors.checkout}</div>
                 )}
               </div>
+              <div style={classes.submitButton}>
+                <Button type="submit">Submit</Button>
+              </div>
             </div>
-            <Button type="submit">Submit</Button>
           </form>
         )}
       </Formik>
